@@ -1,0 +1,22 @@
+// [START declaration]
+syntax = "proto3";
+package sapient_msg.bsi_flex_335_v1_0;
+
+import "sapient_msg/proto_options.proto";
+// [END declaration]
+
+// [START java_declaration]
+option java_multiple_files = true;
+option java_package = "uk.gov.dstl.sapientmsg";
+option java_outer_classname = "ErrorProto";
+// [END java_declaration]
+
+
+// [START messages]
+message Error {
+    option (message_options) = {xml_message_name: "Error"};
+
+    optional bytes packet = 1 [(field_options) = {is_mandatory: true}];  // Packet which caused the error
+    optional string error_message = 2 [(field_options) = {is_mandatory: true}]; // Description of the error being reported
+}
+// [END messages]

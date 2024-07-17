@@ -1,0 +1,20 @@
+<DetectionReport>
+  <reportID>1000003</reportID>
+  <objectID>1000004</objectID>
+  <rangeBearing>
+    <Ele>1.0</Ele>
+    <Az>2.0</Az>
+    <R>3.0</R>
+    <eEle>1.0</eEle>
+    <eAz>1.0</eAz>
+    <eR>2.0</eR>
+  </rangeBearing>
+  <detectionConfidence>0.8999999761581421</detectionConfidence>
+  <class type="Air Vehicle">
+    <confidence>0.800000011920929</confidence>
+  </class>
+  <class type="Unknown">
+    <confidence>0.20000000298023224</confidence>
+  </class>
+  <colour>blue</colour>
+</DetectionReport>

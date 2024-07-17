@@ -1,0 +1,139 @@
+{
+    "registration": {
+        "nodeDefinition": [
+            {
+                "nodeType": "NODE_TYPE_OTHER",
+                "nodeSubType": [
+                    "Test Radar"
+                ]
+            }
+        ],
+        "icdVersion": "BSI Flex 335 v1.0",
+        "name": "Test Radar",
+        "capabilities": [
+            {
+                "category": "other",
+                "type": "test capability",
+                "value": "10",
+                "units": "cm"
+            }
+        ],
+        "shortName": "Radar",
+        "statusDefinition": {
+            "statusInterval": {
+                "units": "TIME_UNITS_SECONDS",
+                "value": 5.0
+            }
+        },
+        "modeDefinition": [
+            {
+                "modeName": "test",
+                "settleTime": {
+                    "units": "TIME_UNITS_SECONDS",
+                    "value": 5.0
+                },
+                "scanType": "SCAN_TYPE_STEERABLE",
+                "trackingType": "TRACKING_TYPE_TRACK",
+                "detectionDefinition": {
+                    "locationType": {
+                        "rangeBearingUnits": "RANGE_BEARING_COORDINATE_SYSTEM_DEGREES_M",
+                        "locationDatum": "LOCATION_DATUM_WGS84_E",
+                        "zone": "30N"
+                    },
+                    "detectionClassDefinition": [
+                        {
+                            "confidenceDefinition": "CONFIDENCE_DEFINITION_SINGLE_CLASS",
+                            "classPerformance": [
+                                {
+                                    "type": "FAR",
+                                    "units": "Per Period",
+                                    "unitValue": "1",
+                                    "variationType": "Linear with Range"
+                                }
+                            ],
+                            "classDefinition": [
+                                {
+                                    "type": "Human",
+                                    "units": "Probability"
+                                }
+                            ]
+                        }
+                    ],
+                    "behaviourDefinition": [
+                        {
+                            "type": "Walking",
+                            "units": "Probability"
+                        }
+                    ],
+                    "geometricError": {
+                        "type": "Standard Deviation",
+                        "units": "metres",
+                        "variationType": "Linear with Range",
+                        "performanceValue": [
+                            {
+                                "type": "eRmin",
+                                "units": "eRmin",
+                                "unitValue": "0.1"
+                            },
+                            {
+                                "type": "eRmax",
+                                "units": "eRmax",
+                                "unitValue": "0.5"
+                            }
+                        ]
+                    }
+                },
+                "task": [
+                    {
+                        "concurrentTasks": 2,
+                        "regionDefinition": {
+                            "regionType": [
+                                "REGION_TYPE_AREA_OF_INTEREST"
+                            ],
+                            "settleTime": {
+                                "units": "TIME_UNITS_SECONDS",
+                                "value": 5.0
+                            },
+                            "regionArea": [
+                                {
+                                    "locationUnits": "LOCATION_COORDINATE_SYSTEM_LAT_LNG_DEG_M",
+                                    "locationDatum": "LOCATION_DATUM_WGS84_E",
+                                    "zone": "30N"
+                                }
+                            ]
+                        },
+                        "command": [
+                            {
+                                "name": "Request",
+                                "units": "Start, Stop, Reset, Heartbeat",
+                                "completionTime": {
+                                    "units": "TIME_UNITS_SECONDS",
+                                    "value": 5.0
+                                },
+                                "type": "COMMAND_TYPE_REQUEST"
+                            },
+                            {
+                                "name": "lookAt",
+                                "units": "RangeBearing",
+                                "completionTime": {
+                                    "units": "TIME_UNITS_SECONDS",
+                                    "value": 10.0
+                                },
+                                "type": "COMMAND_TYPE_LOOK_AT"
+                            },
+                            {
+                                "name": "goTo",
+                                "units": "Location",
+                                "completionTime": {
+                                    "units": "TIME_UNITS_SECONDS",
+                                    "value": 0.0
+                                },
+                                "type": "COMMAND_TYPE_REQUEST"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

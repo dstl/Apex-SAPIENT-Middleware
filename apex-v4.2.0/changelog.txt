@@ -1,0 +1,65 @@
+4.2.0
+- Updated Apex to latest BSI Flex 335 v2.0 protos from github.
+- icd_version string(s) updated & validated as per official format.
+- Fixes for auto-sensorid not working anymore with Legacy XML sensors.
+
+4.1.0
+- Updated BSI V2 protos to resolve two instances of enum Operator
+- Added load testing mechansim to tests
+- Rename connections for BSI Flex 335 v2.0 terminology (codebase/apex_gui/config etc)
+  - ASM => Child
+  - DMM => Peer
+  - Also affects apex_config.json
+- Extend database tables (Connection/Message) to store fields with the protocol version
+
+4.0.0
+- Optional registration ack sending, for BSI Flex 2.0
+- BSI Flex 335 V2.0 schema support with upgrade/downgrade & multi-version ASM suppoort.
+- Remove xml message conversions related field extensions from BSI v2 protos
+- Update BSI V2 support for final proto changes
+- Apex is now delivered in 3 forms (ready to use binaries, sources + pre-configured python virtual environment, sources only)
+  - apex-v4.0.0-deploy.zip (ready to use binaries, no internet needed)
+  - apex-v4.0.0-python.zip (ready to use sources + pre-configured python virtual environment, no internet needed)
+  - apex-v4.0.0-source.zip (python sources. Internet needed & setup required as detailed in readme.md in the zip)
+- readme.md (in the sources) is updated to reflect customer feedback and updated delivery formats
+- Improved Backwards compatibility for Sapient Version 6 (XML) handling.
+
+3.3.0
+- Extend REST Endpoint inputs for multiple node_ids or wild cards/partial strings where appropriate
+- Add retrieving of fused detections for all REST Detection endpoints
+- Add REST endpoint to get node types of all sensors
+
+3.2.0
+- REST GET Endpoints for Sensor/Node Information
+
+3.1.0
+- Initial implementation of REST API
+- Addition of Elasticsearch DB to save incoming messages
+- Uses Poetry tool for dependency management and packaging
+
+3.0.0
+- Protobuf to XML backwards compatibility
+
+2.2.0
+- Implemented ICD version validation
+- Updated replay script to include cached messages
+
+2.1.1
+- Switch Nuitka build from onefile to standalone to prevent some antivirus scanners from false alarming.
+- Resolved routing issues which prevented “forward all” parent connections from receiving high level messages.
+
+2.1.0
+- Implemented support for validation of protobuf messages against the annotated BSI Flex 335 ICD proto files
+
+
+2.0.0
+- Updated to support Protobuf for SAPIENT BSI Flex 335 version 1 ICD
+- XML messages for older SAPIENT ICDs no longer supported
+- Database updated to provide a version table
+
+1.1.0
+- Database rollover implemented: Support for sqlite database rollover which can be configured within the apex_config.json
+- Deploy script added: deploy scripts added that provide a way to compile the Apex software into an exe that can be run without any dependency installation
+
+1.0.0
+- Initial Release

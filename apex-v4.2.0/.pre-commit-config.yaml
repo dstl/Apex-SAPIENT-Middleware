@@ -1,0 +1,49 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+    - id: trailing-whitespace
+      exclude: ^.*.md
+    - id: end-of-file-fixer
+    - id: check-yaml
+      name: Check standard yaml files
+      exclude: ^(.clang-format|tests\/docker-compose.test.yml)
+    - id: check-yaml
+      name: Check special yaml files
+      args: [--unsafe]
+      files: tests/docker-compose.test.yml
+    - id: check-added-large-files
+    - id: debug-statements
+    - id: check-toml
+    - id: check-merge-conflict
+
+- repo: https://github.com/psf/black
+  rev: 23.11.0
+  hooks:
+  - id: black
+    exclude: ^.*_pb2.py.?
+
+- repo: https://github.com/python-poetry/poetry
+  rev: '1.7.1'
+  hooks:
+  - id: poetry-check
+    args: ["--lock"]
+  - id: poetry-export
+    args: ["--without=dev", "-o", "requirements.txt"]
+  - id: poetry-install
+
+- repo: https://github.com/PyCQA/flake8
+  rev: 6.1.0
+  hooks:
+  - id: flake8
+    exclude: ^.*_pb2.py.?
+
+- repo: local
+  hooks:
+    - id: protobuf
+      name: generate
+      entry: python
+      args: ["run_protoc.py"]
+      language: python
+      types: [ proto ]
+      additional_dependencies: ["grpcio-tools==1.60.0"]

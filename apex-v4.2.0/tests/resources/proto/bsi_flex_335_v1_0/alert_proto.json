@@ -1,0 +1,31 @@
+{
+    "timestamp": "2023-08-15T07:44:19.411134Z",
+    "nodeId": "1",
+    "alert": {
+        "alertId": "01H7W2E6EPC2HSPE53XJJNH1EZ",
+        "alertType": "ALERT_TYPE_INFORMATION",
+        "status": "ALERT_STATUS_ACTIVE",
+        "location": {
+            "x": 54.0,
+            "y": 87.0,
+            "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+            "datum": "LOCATION_DATUM_UNSPECIFIED"
+        },
+        "regionId": "01H7W2E6EP66KP1SP8NZHNZ31A",
+        "priority": "DISCRETE_PRIORITY_LOW",
+        "ranking": 0.1,
+        "confidence": 0.9,
+        "associatedFile": [
+            {
+                "type": "file",
+                "url": "path/to/file"
+            }
+        ],
+        "associatedDetection": [
+            {
+                "timestamp": "2023-03-06T14:44:26Z"
+            }
+        ],
+        "additionalInformation": "nothing to add"
+    }
+}

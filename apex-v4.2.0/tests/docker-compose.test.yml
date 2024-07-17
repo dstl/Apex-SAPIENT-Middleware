@@ -1,0 +1,43 @@
+version: '3.8'
+
+
+networks:
+ default:
+   name: elastic
+   external: false
+
+services:
+  unit-tests:
+    image: python:3.9
+    volumes:
+      - ${ROOT_REPO_DIR}:/code
+      - ${TEST_OUTPUT_DIR}:/out
+      - certs:/creds
+
+    environment:
+      - CREDENTIALS_DIR=/creds
+      - ELASTIC_HOSTNAME=elastic01
+
+    command: >
+      bash -c '
+        cd /code;
+        pip install poetry;
+        poetry install;
+        poetry run pytest --junitxml=/out/pytest_report.xml;
+      '
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f pytest_report.xml ]"]
+      interval: 1s
+      timeout: 5s
+      retries: 120
+
+    depends_on:
+      elastic01:
+        condition: service_healthy
+
+
+  elastic01:
+    ports: !reset []
+
+  kibana:
+    ports: !reset []

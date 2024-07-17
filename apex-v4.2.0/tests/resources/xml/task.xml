@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf8'?>
+<SensorTask>
+  <timestamp>2023-03-06T14:37:51.347198Z</timestamp>
+  <sensorID>1000001</sensorID>
+  <taskID>0</taskID>
+  <taskName>Default</taskName>
+  <taskDescription>Test default task</taskDescription>
+  <control>Start</control>
+  <region>
+    <type>Area of Interest</type>
+    <regionID>1</regionID>
+    <regionName>Car Park</regionName>
+    <locationList>
+      <location>
+        <X>123450.0</X>
+        <Y>345670.0</Y>
+      </location>
+      <location>
+        <X>123480.0</X>
+        <Y>345670.0</Y>
+      </location>
+    </locationList>
+  </region>
+  <command>
+    <mode>Test</mode>
+  </command>
+</SensorTask>

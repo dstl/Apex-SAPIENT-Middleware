@@ -1,0 +1,42 @@
+{
+    "timestamp": "2023-08-14T08:23:46.344017Z",
+    "nodeId": "ea54bd43-304f-4d11-a80a-6e5a401bdb7d",
+    "statusReport": {
+        "reportId": "01H7SRX8VQ0CCV2AQ8TCXVJ1KD",
+        "system": "SYSTEM_OK",
+        "info": "INFO_NEW",
+        "nodeLocation": {
+            "x": 603885.0,
+            "y": 5650836.0,
+            "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+            "datum": "LOCATION_DATUM_UNSPECIFIED"
+        },
+        "fieldOfView": {
+            "rangeBearing": {
+                "azimuth": 0.0,
+                "range": 300.0,
+                "horizontalExtent": 360.0,
+                "coordinateSystem": "RANGE_BEARING_COORDINATE_SYSTEM_UNSPECIFIED",
+                "datum": "RANGE_BEARING_DATUM_UNSPECIFIED"
+            }
+        },
+        "coverage": {
+            "locationList": {
+                "locations": [
+                    {
+                        "x": 20.0,
+                        "y": 30.0,
+                        "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+                        "datum": "LOCATION_DATUM_UNSPECIFIED"
+                    },
+                    {
+                        "x": 30.0,
+                        "y": 40.0,
+                        "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+                        "datum": "LOCATION_DATUM_UNSPECIFIED"
+                    }
+                ]
+            }
+        }
+    }
+}

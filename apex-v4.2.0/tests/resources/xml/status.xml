@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf8'?>
+<StatusReport>
+  <timestamp>2023-03-06T11:38:57.868700Z</timestamp>
+  <sourceID>1000001</sourceID>
+  <system>OK</system>
+  <info>New</info>
+  <reportID>1000002</reportID>
+  <sensorLocation>
+    <location>
+      <X>603885.0</X>
+      <Y>5650836.0</Y>
+    </location>
+  </sensorLocation>
+  <statusRegion>
+    <description>It's just a test region</description>
+    <regionID>1000003</regionID>
+    <regionName>Test Region</regionName>
+    <regionStatus>Active</regionStatus>
+    <type>ROI</type>
+    <locationList>
+      <location>
+        <X>20.0</X>
+        <Y>30.0</Y>
+      </location>
+      <location>
+        <X>30.0</X>
+        <Y>40.0</Y>
+      </location>
+    </locationList>
+  </statusRegion>
+  <fieldOfView>
+    <rangeBearingCone>
+      <R>300.0</R>
+      <Az>0.0</Az>
+      <hExtent>360.0</hExtent>
+    </rangeBearingCone>
+  </fieldOfView>
+  <coverage>
+    <locationList>
+      <location>
+        <X>20.0</X>
+        <Y>30.0</Y>
+      </location>
+      <location>
+        <X>30.0</X>
+        <Y>40.0</Y>
+      </location>
+    </locationList>
+  </coverage>
+</StatusReport>

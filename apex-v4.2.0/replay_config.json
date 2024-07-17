@@ -1,0 +1,15 @@
+{
+  "log_level": "INFO",
+  "filename": "SQL_FILE_PATH",
+  "is_outbound": false,
+  "host": "127.0.0.1",
+  "port": 5004,
+  "topic": "apex_topic",
+  "wait_every_n_messages": 1,
+  "send_pending_on_exit": true,
+  "start_time": "2021-09-27T10:45:20Z",
+  "end_time": "2021-09-27T10:46:04.400288Z",
+  "speed_multiplier": 2,
+  "format": "PROTO",
+  "icd_version": "BSI Flex 335 v2.0"
+}

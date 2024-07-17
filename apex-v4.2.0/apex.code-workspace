@@ -1,0 +1,45 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Apex Server",
+				"type": "debugpy",
+				"request": "launch",
+				"program": "sapient_apex_server/apex.py",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			},
+			{
+				"name": "Apex GUI",
+				"type": "debugpy",
+				"request": "launch",
+				"program": "sapient_apex_gui/apex_gui.py",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			},
+			{
+				"name": "Apex Replay",
+				"type": "debugpy",
+				"request": "launch",
+				"program": "sapient_apex_replay/replay.py",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			},
+			{
+				"name": "Python: Current File",
+				"type": "debugpy",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			}
+		]
+	}
+}

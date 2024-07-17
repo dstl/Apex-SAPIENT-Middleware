@@ -1,0 +1,27 @@
+{
+    "timestamp": "2023-08-14T10:22:02.340051Z",
+    "nodeId": "b5546692-a0cc-4846-a36c-4b7098eae08e",
+    "detectionReport": {
+        "reportId": "01H7SS2G2HFG5EP09GYC8YP69C",
+        "objectId": "01H7SS2G2H7PQPQ6F1MMCF9BT5",
+        "taskId": "01H7SS2G2HA9YTCB6QF20FN1YG",
+        "location": {
+            "x": 37.0,
+            "y": 53.0,
+            "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+            "datum": "LOCATION_DATUM_UNSPECIFIED"
+        },
+        "detectionConfidence": 0.9,
+        "classification": [
+            {
+                "type": "Human",
+                "confidence": 0.8
+            },
+            {
+                "type": "Unknown",
+                "confidence": 0.2
+            }
+        ],
+        "colour": "blue"
+    }
+}

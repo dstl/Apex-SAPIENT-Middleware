@@ -1,0 +1,39 @@
+<SensorRegistration>
+  <icdVersion>BSI Flex 335 v1.0</icdVersion>
+  <sensorType>Test Radar</sensorType>
+  <name>Test Sensor</name>
+  <capabilities category="other" type="test capability" />
+  <heartbeatDefinition>
+    <heartbeatInterval units="Seconds" value="5.0" />
+    <sensorLocationDefinition>
+      <locationType locationUnits="decimal degrees-metres" locationDatum="WGS84 Ellipsoid" zone="30N" units="decimal degrees-metres" value="GPS" datum="WGS84 Ellipsoid">GPS</locationType>
+    </sensorLocationDefinition>
+    <heartbeatReport category="Status" type="Status" />
+  </heartbeatDefinition>
+  <modeDefinition type="Permanent">
+    <modeName>test</modeName>
+    <settleTime units="Seconds" value="5.0" />
+    <scanType>Steerable</scanType>
+    <trackingType>Track</trackingType>
+    <detectionDefinition>
+      <locationType locationUnits="decimal degrees-metres" locationDatum="WGS84 Ellipsoid" zone="30N" units="decimal degrees-metres" value="GPS" datum="WGS84 Ellipsoid">GPS</locationType>
+      <detectionClassDefinition>
+        <confidenceDefinition>Single Class</confidenceDefinition>
+        <classDefinition type="Human" units="Probability" />
+      </detectionClassDefinition>
+    </detectionDefinition>
+    <taskDefinition>
+      <concurrentTasks>2</concurrentTasks>
+      <regionDefinition>
+        <regionType>Area Of Interest</regionType>
+        <settleTime units="Seconds" value="5.0" />
+        <locationType locationUnits="decimal degrees-metres" locationDatum="WGS84 Ellipsoid" zone="30N" units="decimal degrees-metres" value="GPS" datum="WGS84 Ellipsoid">GPS</locationType>
+      </regionDefinition>
+      <command name="Request" units="Start, Stop, Reset, Heartbeat" type="Request">
+        <completionTime units="Seconds" value="5.0" />
+      </command>
+    </taskDefinition>
+  </modeDefinition>
+  <sensorID>1000001</sensorID>
+  <nodeType>Other</nodeType>
+</SensorRegistration>

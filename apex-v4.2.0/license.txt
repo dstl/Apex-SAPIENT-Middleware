@@ -1,0 +1,22 @@
+DEFCON 703 applies to deliverables O1, O2, O3, O4, D2.3a, D2.3c and D2.2d as described in the Deliverables section of the Technical Proposal.
+
+Roke will retain ownership of its background IP and nothing in this proposal shall restrict Roke’s use of its background IP.
+Roke has already delivered its Apex Software in Deliverable D2.2b (SAPIENT Middleware – Source Code) of ST2.2, and
+as part of this proposal for ST2.3 Roke is proposing to deliver Deliverable D2.3b which is a further drop of the
+Apex Software: Roke’s background IP. A training session on the Apex software is also proposed in Deliverable D2.3e.
+
+The following terms (which applied to Deliverable D2.2b in ST2.2) shall apply to Deliverable D2.3b (Roke’s Apex software)
+and D2.3e (Apex software training session). For the avoidance of doubt, a licence for the use of Roke’s Apex software
+will be granted as part of ST2.3:
+
+• Roke grants Dstl a non-exclusive, royalty-free, perpetual worldwide, irrevocable, unrestricted license to use, develop,
+modify, enhance and use for any other purpose Roke’s APEX software (including source code and documentation).
+This license shall include an unrestricted right to sub-license.
+For the avoidance of doubt, this license will allow Dstl to open-source the APEX software as-is or in modified form
+under any open-source licensing terms.
+
+• THE SOFTWARE IS PROVIDED "AS IS", WITHOUT CONDITIONS, WARRANTIES OR OTHER TERMS OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE CONDITIONS, WARRANTIES OR OTHER TERMS AS TO SATISFACTORY QUALITY, MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, THE USE OF REASONABLE SKILL AND CARE OR NONINFRINGEMENT.
+
+• IN NO EVENT SHALL ROKE BE LIABLE FOR ANY CLAIM, LOSSES OR DAMAGES OR OTHER LIABILITY, WHETHER SUFFERED DIRECTLY OR INDIRECTLY OR ARE IMMEDIATE OR CONSEQUENTIAL, AND WHETHER ARISING IN CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH DSTL’S EXERCISE OF THE RIGHTS GRANTED IN RESPECT OF THE SOFTWARE.

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf8'?>
+<DetectionReport>
+  <timestamp>2023-03-06T13:33:29.423119Z</timestamp>
+  <sourceID>1000001</sourceID>
+  <reportID>1</reportID>
+  <objectID>1</objectID>
+  <taskID>0</taskID>
+  <colour>blue</colour>
+  <location>
+    <X>37.0</X>
+    <Y>53.0</Y>
+  </location>
+  <class type="Human">
+    <confidence>0.8</confidence>
+  </class>
+  <class type="Unknown">
+    <confidence>0.2</confidence>
+  </class>
+  <detectionConfidence>0.9</detectionConfidence>
+</DetectionReport>

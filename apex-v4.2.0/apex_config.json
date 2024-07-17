@@ -1,0 +1,114 @@
+{
+  "logLevel": "INFO",
+  "connections": [
+    {
+      "type": "Child",
+      "port": 5000,
+      "format": "XML",
+      "icd_version": "VERSION6"
+    },
+    {
+      "type": "Child",
+      "port": 5010,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v1.0"
+    },
+    {
+      "type": "Child",
+      "port": 5020,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v2.0"
+    },
+    {
+      "type": "Peer",
+      "port": 5001,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v1.0"
+    },
+    {
+      "type": "Parent",
+      "port": 5002,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v1.0"
+    },
+    {
+      "type": "Recorder",
+      "port": 5003,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v1.0"
+    },
+    {
+      "type": "Parent",
+      "port": 5004,
+      "forwardAll": true,
+      "format": "PROTO"
+    },
+    {
+      "type": "Parent",
+      "host": "127.0.0.1",
+      "port": 10000,
+      "outbound": true,
+      "format": "PROTO",
+      "icd_version": "BSI Flex 335 v1.0"
+    }
+  ],
+  "elasticConfig": {
+    "enabled": false,
+    "host": "localhost",
+    "port": 9200,
+    "useSsl": true,
+    "certLocation": "C:\\elasticsearch-8.11.1\\config\\certs\\http_ca.crt",
+    "user": "elastic",
+    "password": "password"
+  },
+  "apiConfig": {
+    "host": "127.0.0.1",
+    "port": 8080
+  },
+  "enableTimeSyncAdjustment": false,
+  "messageMaxSizeKb": 1024,
+  "detectionConfidenceFiltering": {
+    "enable": false,
+    "threshold": 0.5,
+    "storeInDatabase": true
+  },
+  "middlewareId": "5913c0f4-9f89-4c01-ab90-939099797c4f",
+  "enableMessageConversion": true,
+  "autoAssignSensorIDInRegistration": {
+    "enable": true,
+    "startingID": 1000001,
+    "staticNodeIds": {
+      "3d1ffd1b-cc01-4c26-a7e8-bf4da3d393b8": 0
+    }
+  },
+  "allowPeerRegistration": true,
+  "sendRegistrationAck": true,
+  "rollover": {
+    "enable": true,
+    "unit": "days",
+    "value": 1
+  },
+  "validationOptions": {
+    "validationTypes": [
+      "mandatory_fields_present",
+      "mandatory_oneof_present",
+      "mandatory_repeated_present",
+      "no_unknown_fields",
+      "no_unknown_enum_values",
+      "id_format_valid",
+      "message_timestamp_reasonable",
+      "detection_timestamp_reasonable",
+      "supported_icd_version"
+    ],
+    "strictIdFormat": true,
+    "messageTimestampRange": [
+      -0.9,
+      0.1
+    ],
+    "detectionMinimumGap": 0.08,
+    "supportedIcdVersions": [
+      "BSI Flex 335 v1.0",
+      "BSI Flex 335 v2.0"
+    ]
+  }
+}

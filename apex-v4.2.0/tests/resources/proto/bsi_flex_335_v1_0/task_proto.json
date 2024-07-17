@@ -1,0 +1,39 @@
+{
+    "timestamp": "2023-03-06T14:37:51.347198Z",
+    "nodeId": "3d1ffd1b-cc01-4c26-a7e8-bf4da3d393b8",
+    "destinationId": "1",
+    "task": {
+        "taskId": "01H7T2XMQ3Q4MJY3ZM5BQMPJW9",
+        "taskName": "Default",
+        "taskDescription": "Test default task",
+        "control": "CONTROL_START",
+        "region": [
+            {
+                "type": "REGION_TYPE_AREA_OF_INTEREST",
+                "regionId": "01H7T2XMQ3JCRNYTFE7H0MJY8P",
+                "regionName": "Car Park",
+                "regionArea": {
+                    "locationList": {
+                        "locations": [
+                            {
+                                "x": 123450.0,
+                                "y": 345670.0,
+                                "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+                                "datum": "LOCATION_DATUM_UNSPECIFIED"
+                            },
+                            {
+                                "x": 123480.0,
+                                "y": 345670.0,
+                                "coordinateSystem": "LOCATION_COORDINATE_SYSTEM_UNSPECIFIED",
+                                "datum": "LOCATION_DATUM_UNSPECIFIED"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "command": {
+            "modeChange": "Test"
+        }
+    }
+}

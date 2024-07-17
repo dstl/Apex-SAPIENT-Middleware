@@ -1,0 +1,36 @@
+<StatusReport>
+  <reportID>1000003</reportID>
+  <system>OK</system>
+  <info>New</info>
+  <sensorLocation>
+    <location>
+      <X>0.1</X>
+      <Y>0.1</Y>
+      <coordinateSystem>UTM</coordinateSystem>
+      <datum>WGS84 Geoid</datum>
+    </location>
+  </sensorLocation>
+  <fieldOfView>
+    <rangeBearingCone>
+      <Az>0.0</Az>
+      <R>300.0</R>
+      <hExtent>360.0</hExtent>
+    </rangeBearingCone>
+  </fieldOfView>
+  <coverage>
+    <locationList>
+      <location>
+        <X>0.1</X>
+        <Y>0.1</Y>
+        <coordinateSystem>UTM</coordinateSystem>
+        <datum>WGS84 Geoid</datum>
+      </location>
+      <location>
+        <X>0.1</X>
+        <Y>0.1</Y>
+        <coordinateSystem>UTM</coordinateSystem>
+        <datum>WGS84 Geoid</datum>
+      </location>
+    </locationList>
+  </coverage>
+</StatusReport>

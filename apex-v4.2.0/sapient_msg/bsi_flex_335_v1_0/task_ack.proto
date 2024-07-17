@@ -1,0 +1,33 @@
+// [START declaration]
+syntax = "proto3";
+package sapient_msg.bsi_flex_335_v1_0;
+
+import "sapient_msg/bsi_flex_335_v1_0/associated_file.proto";
+import "sapient_msg/proto_options.proto";
+// [END declaration]
+
+// [START java_declaration]
+option java_multiple_files = true;
+option java_package = "uk.gov.dstl.sapientmsg";
+option java_outer_classname = "TaskAckProto";
+// [END java_declaration]
+
+
+// [START messages]
+message TaskAck {
+  option (message_options) = {xml_message_name: "SensorTaskACK"};
+
+  optional string task_id = 1 [(field_options) = {is_mandatory: true, is_ulid: true, xml_name: "taskID"}]; // ULID of task that is being acknowledged
+  optional TaskStatus task_status = 2 [(field_options) = {is_mandatory: true, xml_name: "status"}]; // Status of the task (accepted or rejected)
+  optional string reason = 3; // Reason for the rejection if task is rejected or completed
+  optional AssociatedFile associated_file = 4; // File associated with task being acknowledged
+
+  enum TaskStatus {
+    TASK_STATUS_UNSPECIFIED = 0; // Unset enum
+    TASK_STATUS_ACCEPTED = 1; // Task was accepted
+    TASK_STATUS_REJECTED = 2; // Task was rejected (reason should also be present in the message)
+    TASK_STATUS_COMPLETED = 3; // Task has been completed
+    TASK_STATUS_FAILED = 4; // A node has previously accepted a task but has been unable to successfully complete it.
+  }
+}
+// [END messages]

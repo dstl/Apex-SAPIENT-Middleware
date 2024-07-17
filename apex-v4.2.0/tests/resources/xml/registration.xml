@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SensorRegistration>
+  <timestamp>2023-03-06T13:33:29.423119Z</timestamp>
+  <sensorID>1000001</sensorID>
+  <sensorType>Test Radar</sensorType>
+  <name>Radar</name>
+  <capabilities Category="other" Type="test capability" Value="10" Units="cm"/>
+  <heartbeatDefinition>
+    <heartbeatInterval units="Seconds" value="5" />
+  </heartbeatDefinition>
+  <modeDefinition>
+    <modeName>test</modeName>
+    <settleTime units="Seconds" value="5" />
+    <scanType>Steerable</scanType>
+    <trackingType>Track</trackingType>
+    <detectionDefinition>
+      <locationType units="decimal degrees-meters" datum="WGS84" zone="30N">GPS</locationType>
+      <geometricError type="Standard Deviation" units="metres" variationType="Linear with Range">
+          <performanceValue type="eRmin" value="0.1"></performanceValue>
+          <performanceValue type="eRmax" value="0.5"></performanceValue>
+      </geometricError>
+      <detectionClassDefinition>
+        <confidenceDefinition>Single Class</confidenceDefinition>
+          <classPerformance type="FAR" units="Per Period" unitValue="1" variationType="Linear with Range">
+            <performanceValue type="eRmin" value="0.1"></performanceValue>
+            <performanceValue type="eRmax" value="0.5"></performanceValue>
+          </classPerformance>
+        <classDefinition type="Human">
+          <confidence units="Probability" />
+        </classDefinition>
+      </detectionClassDefinition>
+      <behaviourDefinition type="Walking">
+        <confidence units="Probability"></confidence>
+      </behaviourDefinition>
+    </detectionDefinition>
+    <taskDefinition>
+      <concurrentTasks>2</concurrentTasks>
+      <regionDefinition>
+        <regionType>Area of Interest</regionType>
+        <settleTime units="Seconds" value="5" />
+        <locationType units="decimal degrees-metres" datum="WGS84" zone="30N">GPS</locationType>
+      </regionDefinition>
+      <command name="Request" units="Start, Stop, Reset, Heartbeat" completionTime="5" completionTimeUnits="Seconds" />
+      <command name="lookAt" units="RangeBearing" completionTime="10" completionTimeUnits="seconds"></command>
+      <command name="goTo" units="Location" completionTime="0" completionTimeUnits="seconds"></command>
+    </taskDefinition>
+  </modeDefinition>
+</SensorRegistration>

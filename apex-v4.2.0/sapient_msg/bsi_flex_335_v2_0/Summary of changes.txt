@@ -1,0 +1,76 @@
+This is all the changes in the Proto files during the modifications regired for v2
+
+Proto_options.proto - 	this has new Validation Options and was provided by Roke - not directly for updates to BSI v2.
+
+sapient_message.proto - added field “additional_information”
+
+range_bearing.proto - 	added new message “LocationOrRangeBearing”
+
+registration.proto - 	In message “Registration” - new fields added
+			“dependant_nodes”
+			“reporting_region”
+			“configuration_data”
+
+			In message “NodeDefinition” - new field added
+			“platform_type”
+
+			In enum “NodeType”, new options
+			Mobile_Node
+			Pointable_Node
+			Fusion_Node
+
+			In enum “StatusReportCategory” - two new fields
+
+			STATUS_REPORT_CATEGORY_PLATFORM
+			STATUS_REPORT_CATEGORY_EFFECTOR
+
+			In enum “ModeType” – one new option
+			MODE_TYPE_DEFAULT
+
+			In enum DetectionReprot Category – one new option
+
+			DETECTION_REPORT_CATEGORY_SIGNAL
+
+			In message “DetectionClassDefinition” – one new field
+
+			taxonomy_dock_definition
+
+			In message “Command”
+
+			Removed “name” field because it is a duplicate
+
+			In enum “CommandType” – 3 new options
+
+			COMMAND_TYPE_MOVE_TO
+			COMMAND_TYPE_PATROL
+			COMMAND_TYPE_FOLLOW
+
+
+			In enum “RegionType” -  2 new options
+
+			REGION_TYPE_MOBILE_NODE_NO_GO_AREA
+			REGION_TYPE_MOBILE_NODE_GO_AREA
+
+			New messages added
+
+			TaxonomyDockDefinition
+			ExtensionSubclass
+			ConfigurationData
+
+
+registration_ack.proto - ack_response_reason now ‘repeated’ to allow for a list of reasons
+
+task.proto -		In message “Command” – 3 new fields
+			move_to
+			patrol
+			follow
+
+			removed message “LocationOrRangeBearing” as it is now declared in range_bearing.proto
+
+task_ack.proto -	In message TaskAck – the reason field is now ‘repeated’ to allow a list of reasons
+
+alert_ack.proto -	In message AlertAck – the reason field is now ‘repeated’ to allow a list of reasons
+			‘alert_status’ renamed to ‘alert_ack_status’
+
+
+error.proto -		In message Error – the error_message field is now ‘repeated’ to allow a list of error messages

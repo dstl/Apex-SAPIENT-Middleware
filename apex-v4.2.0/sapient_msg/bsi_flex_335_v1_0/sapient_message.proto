@@ -1,0 +1,53 @@
+// [START declaration]
+syntax = "proto3";
+package sapient_msg.bsi_flex_335_v1_0;
+
+import "google/protobuf/timestamp.proto";
+
+import "sapient_msg/bsi_flex_335_v1_0/alert.proto";
+import "sapient_msg/bsi_flex_335_v1_0/alert_ack.proto";
+import "sapient_msg/bsi_flex_335_v1_0/detection_report.proto";
+import "sapient_msg/bsi_flex_335_v1_0/error.proto";
+import "sapient_msg/proto_options.proto";
+import "sapient_msg/bsi_flex_335_v1_0/registration.proto";
+import "sapient_msg/bsi_flex_335_v1_0/registration_ack.proto";
+import "sapient_msg/bsi_flex_335_v1_0/status_report.proto";
+import "sapient_msg/bsi_flex_335_v1_0/task.proto";
+import "sapient_msg/bsi_flex_335_v1_0/task_ack.proto";
+// [END declaration]
+
+// [START java_declaration]
+option java_multiple_files = true;
+option java_package = "uk.gov.dstl.sapientmsg";
+option java_outer_classname = "SapientMessageProto";
+// [END java_declaration]
+
+
+// [START options]
+option (file_options) = {
+  standard_version: "bsi_flex_335_v1_0"
+};
+// [END options]
+
+
+// [START messages]
+message SapientMessage {
+    option (message_options) = {is_sapient_message: true, xml_message_name: "SapientMessage"};
+
+  optional google.protobuf.Timestamp timestamp = 1 [(field_options) = {is_mandatory: true, is_proto_time: true}]; // UTC timestamp the message was sent
+    optional string node_id = 2 [(field_options) = {is_mandatory: true, is_uuid: true}]; // UUID for the node which is sending the message
+    optional string destination_id = 3 [(field_options) = {is_uuid: true}]; // UUID for the node being tasked
+    oneof content {
+        option (oneof_options) = {is_mandatory: true};
+        Registration registration = 4 [(field_options) = {xml_name: "SensorRegistration"}]; // SAPIENT Registration message
+        RegistrationAck registration_ack = 5 [(field_options) = {xml_name: "SensorRegistrationACK"}]; // SAPIENT Registration Acknowledgement message
+        StatusReport status_report = 6 [(field_options) = {xml_name: "StatusReport"}]; // SAPIENT Status Report message
+        DetectionReport detection_report = 7 [(field_options) = {xml_name: "DetectionReport"}]; // SAPIENT Detection Report message
+        Task task = 8 [(field_options) = {xml_name: "SensorTask"}]; // SAPIENT Task message
+        TaskAck task_ack = 9 [(field_options) = {xml_name: "SensorTaskACK"}]; // SAPIENT Task Acknowledgement message
+        Alert alert = 10 [(field_options) = {xml_name: "Alert"}]; // SAPIENT Alert message
+        AlertAck alert_ack = 11 [(field_options) = {xml_name: "AlertACK"}]; // SAPIENT Alert Acknowledgment message
+        Error error = 12 [(field_options) = {xml_name: "Error"}]; // SAPIENT Error message
+    }
+}
+// [END messages]

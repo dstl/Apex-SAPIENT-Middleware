@@ -1,0 +1,71 @@
+{
+  "logLevel": "INFO",
+  "connections": [
+    {
+      "type": "Child",
+      "port": 5000
+    },
+    {
+      "type": "Child",
+      "port": 5010
+    },
+    {
+      "type": "Peer",
+      "port": 5001
+    },
+    {
+      "type": "Parent",
+      "port": 5002
+    },
+    {
+      "type": "Parent",
+      "port": 5004,
+      "forwardAll": true
+    },
+    {
+      "type": "Recorder",
+      "port": 5003
+    },
+    {
+      "type": "Parent",
+      "host": "127.0.0.1",
+      "port": 10000,
+      "outbound": true
+    }
+  ],
+  "elasticConfig": {
+    "enabled": false
+  },
+  "enableMessageConversion": false,
+  "enableTimeSyncAdjustment": false,
+  "messageMaxSizeKb": 1024,
+  "detectionConfidenceFiltering": {
+    "enable": false,
+    "threshold": 0.5,
+    "storeInDatabase": true
+  },
+  "middlewareId": "5913c0f4-9f89-4c01-ab90-939099797c4f",
+  "autoAssignSensorIDInRegistration": {
+    "enable": true,
+    "startingID": 1000001,
+    "staticNodeIds": {
+      "3d1ffd1b-cc01-4c26-a7e8-bf4da3d393b8": 0
+    }
+  },
+  "allowPeerRegistration": true,
+  "sendRegistrationAck": true,
+  "rollover": {
+    "enable": true,
+    "unit": "days",
+    "value": 1
+  },
+  "validationOptions": {
+    "validationTypes": [],
+    "strictIdFormat": true,
+    "messageTimestampRange": [
+      -0.9,
+      0.1
+    ],
+    "detectionMinimumGap": 0.08
+  }
+}

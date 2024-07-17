@@ -1,0 +1,24 @@
+<Alert>
+    <alertID>1000001</alertID>
+    <alertType>Information</alertType>
+    <status>Active</status>
+    <location>
+        <X>54.0</X>
+        <Y>87.0</Y>
+    </location>
+    <regionID>1000002</regionID>
+    <priority>Low</priority>
+    <ranking>0.10000000149011612</ranking>
+    <confidence>0.8999999761581421</confidence>
+    <associatedFile type="file" url="path/to/file" />
+    <associatedDetection timestamp="2023-03-06T14:44:26Z">
+        <location>
+            <X>54.0</X>
+            <Y>87.0</Y>
+        </location>
+        <description>a detection</description>
+    </associatedDetection>
+    <debugText>nothing to add</debugText>
+    <sourceID>1000003</sourceID>
+    <timestamp>2023-03-06T14:44:26Z</timestamp>
+</Alert>

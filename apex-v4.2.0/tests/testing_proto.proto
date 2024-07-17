@@ -1,0 +1,73 @@
+//**INTENDED FOR UNIT TESTING USAGE ONLY**
+syntax = "proto3";
+package sapient_msg_test;
+
+import "google/protobuf/timestamp.proto";
+
+message SapientMessageTest {
+    google.protobuf.Timestamp timestamp = 1;
+    string node_id = 2;
+    optional string destination_id = 3;
+    oneof content {
+        Registration registration = 4;
+        RegistrationAckTest registration_ack = 5;
+        StatusReport status_report = 6;
+        DetectionReport detection_report = 7;
+        Task task = 8;
+        TaskAck task_ack = 9;
+        Alert alert = 10;
+        AlertAckTest alert_ack = 11;
+        Error error = 12;
+    }
+}
+
+message Registration {
+    bool dummy = 1;
+}
+
+message RegistrationAckTest {
+    reserved 2; // ack_response_reason became a repeated in BSI v2
+	bool acceptance = 1;
+    repeated string ack_response_reason = 3;
+    string new_field_example = 4;
+}
+
+message StatusReport {
+    bool dummy = 1;
+}
+
+message DetectionReport {
+    bool dummy = 1;
+}
+
+message Task {
+    bool dummy = 1;
+}
+
+message TaskAck {
+    reserved 2,3;
+    bool dummy = 1;
+}
+
+message Alert {
+    bool dummy = 1;
+}
+
+message AlertAckTest {
+    reserved 2,3; // alert_status became alert_ack_status in BSI v2 & reason became repeated
+    string alert_id = 1;
+    repeated string reason = 4;
+    optional AlertAckStatusTest alert_ack_status = 5;
+
+    enum AlertAckStatusTest {
+        ALERT_ACK_STATUS_UNSPECIFIED = 0;
+        ALERT_ACK_STATUS_ACCEPTED = 1;
+        ALERT_ACK_STATUS_REJECTED = 2;
+        ALERT_ACK_STATUS_CANCELLED = 3;
+        UNKNOWN_ENUM = 4;
+    }
+}
+
+message Error {
+    bool dummy = 1;
+}
