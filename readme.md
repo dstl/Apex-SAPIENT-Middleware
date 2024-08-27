@@ -6,15 +6,15 @@ This is Apex, a middleware implementation for SAPIENT.
 
 Apex has three main functions:
 
-- **Routing messages between the components:** For example, a task from the DMM for sensor 7 will
-  only go to the relevant ASM's connection. If the sensors connect directly to the DMM, rather than
+- **Routing messages between the components:** For example, a task from the Fusion Node (FN) for sensor 7 will
+  only go to the relevant Edge Node's (EN) connection. If the sensors connect directly to the FN, rather than
   via Apex, then all tasks would get broadcast to all connections.
 - **Validating messages (optional):** Validation against the Protobuf schema of the SAPIENT standard (BSI Flex 335 v1.0, BSI Flex 335 v2.0 & so on.)
 - **Archiving the messages:** Messages are recorded to a database (a SQLite file), allowing for
-  review of what happened afterwards, including the possibility of being replayed in the DMM.
+  review of what happened afterwards, including the possibility of being replayed in the FN.
 
 A variety of smaller tasks are also handled by Apex. For example, registration messages and status
-reports are cached so that if the DMM connects after an ASM then the DMM can still be sent the
+reports are cached so that if the FN connects after an EN then the FN can still be sent the
 earlier relevant messages. Some validation or filtering of messages is also possible e.g. filtering
 out detections with a low detection confidence.
 
