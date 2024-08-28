@@ -20,3 +20,20 @@ INCLUDING BUT NOT LIMITED TO THE CONDITIONS, WARRANTIES OR OTHER TERMS AS TO SAT
 FITNESS FOR A PARTICULAR PURPOSE, THE USE OF REASONABLE SKILL AND CARE OR NONINFRINGEMENT.
 
 • IN NO EVENT SHALL ROKE BE LIABLE FOR ANY CLAIM, LOSSES OR DAMAGES OR OTHER LIABILITY, WHETHER SUFFERED DIRECTLY OR INDIRECTLY OR ARE IMMEDIATE OR CONSEQUENTIAL, AND WHETHER ARISING IN CONTRACT, TORT (INCLUDING NEGLIGENCE) OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH DSTL’S EXERCISE OF THE RIGHTS GRANTED IN RESPECT OF THE SOFTWARE.
+
+____________________________________________________
+
+Dstl has chosen to release this software under the Apache 2.0 license.
+
+Except where noted otherwise, the Apex SAPIENT Middleware software 
+is licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at
+
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
