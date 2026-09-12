@@ -171,6 +171,10 @@ def _registration_translate_v2_to_v1(message_dict: dict) -> bool:
         "COMMAND_TYPE_PATROL",
         "COMMAND_TYPE_FOLLOW",
     }
+    v2_only_region_types = {
+        "REGION_TYPE_MOBILE_NODE_NO_GO_AREA",
+        "REGION_TYPE_MOBILE_NODE_GO_AREA",
+    }
 
     for mode_definition in mode_definitions:
         _convert_repeated_to_single(mode_definition, "detection_definition")
@@ -184,6 +188,14 @@ def _registration_translate_v2_to_v1(message_dict: dict) -> bool:
 
         tasks = mode_definition.get("task", [])
         for task in tasks:
+            region_definition = task.get("region_definition", {})
+            region_types = region_definition.get("region_type", [])
+            region_types[:] = [
+                region_type
+                for region_type in region_types
+                if region_type not in v2_only_region_types
+            ]
+
             commands = task.get("command", [])
             # Mobile-node commands were introduced in V2. Drop these capability declarations
             # when downgrading because the V1 command enum cannot represent them.

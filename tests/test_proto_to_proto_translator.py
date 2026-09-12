@@ -30,6 +30,13 @@ def test_v2_registration_downgrade_omits_v2_only_taxonomy_and_commands():
                             }
                         ],
                         "task": {
+                            "region_definition": {
+                                "region_type": [
+                                    "REGION_TYPE_AREA_OF_INTEREST",
+                                    "REGION_TYPE_MOBILE_NODE_NO_GO_AREA",
+                                    "REGION_TYPE_MOBILE_NODE_GO_AREA",
+                                ]
+                            },
                             "command": [
                                 {"type": "COMMAND_TYPE_MOVE_TO"},
                                 {"type": "COMMAND_TYPE_PATROL"},
@@ -52,6 +59,9 @@ def test_v2_registration_downgrade_omits_v2_only_taxonomy_and_commands():
     detection_class = detection_definition["detection_class_definition"][0]
     assert "taxonomy_dock_definition" not in detection_class
 
-    commands = registration["mode_definition"][0]["task"][0]["command"]
+    task = registration["mode_definition"][0]["task"][0]
+    assert task["region_definition"]["region_type"] == ["REGION_TYPE_AREA_OF_INTEREST"]
+
+    commands = task["command"]
     assert [command["type"] for command in commands] == ["COMMAND_TYPE_LOOK_AT"]
     assert commands[0]["name"] == "LookAt"
