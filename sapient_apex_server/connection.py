@@ -15,6 +15,7 @@ They do not handle the mechanics of reading messages from a socket, using other 
 parsing or write to the SQLite database.
 """
 import logging
+from copy import deepcopy
 import string
 import textwrap
 import uuid
@@ -572,7 +573,14 @@ class ParentConnection:
             destination_id = msg.parsed.destination_node_id
             if destination_id is not None and destination_id in self.shared_data.registered_sensors:
                 node_connection = self.shared_data.registered_sensors[destination_id]
-                node_connection.writer(msg, msg.sapient_version)
+                child_msg = deepcopy(msg)
+                _apply_timestamp_offset(
+                    self.shared_data.config,
+                    child_msg,
+                    node_connection.dmm_msg_offset,
+                    node_connection.message_format,
+                )
+                node_connection.writer(child_msg, child_msg.sapient_version)
                 msg.forwarded_count += 1
 
             for writer in self.shared_data.dmm_writers:
