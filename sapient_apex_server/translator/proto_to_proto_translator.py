@@ -166,13 +166,42 @@ def _registration_translate_v2_to_v1(message_dict: dict) -> bool:
     # value back from CommandType enum instead
     mode_definitions = registration_dict.get("mode_definition", [])
 
+    v2_only_command_types = {
+        "COMMAND_TYPE_MOVE_TO",
+        "COMMAND_TYPE_PATROL",
+        "COMMAND_TYPE_FOLLOW",
+    }
+    v2_only_region_types = {
+        "REGION_TYPE_MOBILE_NODE_NO_GO_AREA",
+        "REGION_TYPE_MOBILE_NODE_GO_AREA",
+    }
+
     for mode_definition in mode_definitions:
         _convert_repeated_to_single(mode_definition, "detection_definition")
         _convert_single_to_repeated(mode_definition, "task")
 
+        # Extensible taxonomy docking was introduced in V2 and has no V1 representation.
+        detection_definition = mode_definition.get("detection_definition", {})
+        detection_classes = detection_definition.get("detection_class_definition", [])
+        for detection_class in detection_classes:
+            _remove_fields(detection_class, ["taxonomy_dock_definition"])
+
         tasks = mode_definition.get("task", [])
         for task in tasks:
+            region_definition = task.get("region_definition", {})
+            region_types = region_definition.get("region_type", [])
+            region_types[:] = [
+                region_type
+                for region_type in region_types
+                if region_type not in v2_only_region_types
+            ]
+
             commands = task.get("command", [])
+            # Mobile-node commands were introduced in V2. Drop these capability declarations
+            # when downgrading because the V1 command enum cannot represent them.
+            commands[:] = [
+                command for command in commands if command.get("type") not in v2_only_command_types
+            ]
             for command in commands:
                 if "type" in command:
                     # Get the string representation of the type enum
