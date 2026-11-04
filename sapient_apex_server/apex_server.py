@@ -104,29 +104,31 @@ class ApexServer:
         # when the message was received, even if the parsing thread has a backlog. It does ruin
         # network backpressure, but that is probably not useful for Sapient middleware anyway.
         async def read_to_channel():
-            while True:
-                receive_fn = (
-                    receive_size_prefixed
-                    if connection_config["format"] == MessageFormat.PROTO
-                    else receive_until
-                )
-                message_bytes = await receive_fn(
-                    stream,
-                    read_buffer,
-                    delimiter=b"\0",
-                    max_size=self.config["messageMaxSizeKb"] * 1024,
-                    return_delimiter=True,
-                )
-                global _previous_message_id
-                _previous_message_id += 1
-                raw_message = ReceivedDataRecord(
-                    connection_id=connection_id,
-                    message_id=_previous_message_id,
-                    timestamp=datetime.utcnow(),
-                    data_bytes=message_bytes,
-                )
-                msg_send_channel.send_nowait(raw_message)
-
+            try:
+                while True:
+                    receive_fn = (
+                        receive_size_prefixed
+                        if connection_config["format"] == MessageFormat.PROTO
+                        else receive_until
+                    )
+                    message_bytes = await receive_fn(
+                        stream,
+                        read_buffer,
+                        delimiter=b"\0",
+                        max_size=self.config["messageMaxSizeKb"] * 1024,
+                        return_delimiter=True,
+                    )
+                    global _previous_message_id
+                    _previous_message_id += 1
+                    raw_message = ReceivedDataRecord(
+                        connection_id=connection_id,
+                        message_id=_previous_message_id,
+                        timestamp=datetime.utcnow(),
+                        data_bytes=message_bytes,
+                    )
+                    msg_send_channel.send_nowait(raw_message)
+            finally:
+                msg_send_channel.close()
         parser = _get_parser(
             connection_config["format"],
             enable_message_conversion=self.config.get("enableMessageConversion", True),
@@ -140,29 +142,31 @@ class ApexServer:
         # processes them.
         async def read_from_channel():
             validator = Validator(self.validation_config)
-            async for raw_message in msg_recv_channel:
-                # Parse the message (if valid); use a worker thread in case it takes a while
-                msg = await trio.to_thread.run_sync(
-                    parser,
-                    raw_message,
-                    validator,
-                    self.id_generator,
-                    limiter=self.parser_thread_token,
-                )
+            with trio.CancelScope() as cancel_scope:
+                cancel_scope.shield = True
+                async for raw_message in msg_recv_channel:
+                    # Parse the message (if valid); use a worker thread in case it takes a while
+                    msg = await trio.to_thread.run_sync(
+                        parser,
+                        raw_message,
+                        validator,
+                        self.id_generator,
+                        limiter=self.parser_thread_token,
+                    )
 
-                # Actually handle the message; this is done in the connection object.
-                # This can set more fields in the message record (error, forwarded_count).
-                connection.handle_message(msg, self.id_generator)
+                    # Actually handle the message; this is done in the connection object.
+                    # This can set more fields in the message record (error, forwarded_count).
+                    connection.handle_message(msg, self.id_generator)
 
-                # Callback to main(); this writes the message to SQLite
-                if msg.error is None or msg.error.severity != ErrorSeverity.UNSTORED:
-                    self.callbacks.on_message_receive(msg)
+                    # Callback to main(); this writes the message to SQLite
+                    if msg.error is None or msg.error.severity != ErrorSeverity.UNSTORED:
+                        self.callbacks.on_message_receive(msg)
 
-                # Exit the loop if that was a fatal error. This test is deliberately here,
-                # rather than straight after handle_message, so that the message is still
-                # written to the database.
-                if msg.error is not None and msg.error.severity == ErrorSeverity.FATAL:
-                    raise ApexError(msg.error.description)
+                    # Exit the loop if that was a fatal error. This test is deliberately here,
+                    # rather than straight after handle_message, so that the message is still
+                    # written to the database.
+                    if msg.error is not None and msg.error.severity == ErrorSeverity.FATAL:
+                        raise ApexError(msg.error.description)
 
         error_messages = []
 
